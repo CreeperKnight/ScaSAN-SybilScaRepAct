@@ -24,7 +24,7 @@ Fake-account, or Sybil, detection is important for protecting online social netw
 
 **SybilScaRepAct** is a random-walk-based Sybil-detection algorithm that evaluates user trust scores from a small set of labeled seed nodes. It mitigates the trapping-node problem by redistributing a small amount of trust to trusted seeds.
 
-The implementation uses SciPy sparse matrices and matrix-free propagation, allowing the complete graph to be processed without constructing a dense $3N \times 3N$ transition matrix.
+The implementation uses SciPy sparse matrices and matrix-free propagation, allowing the complete graph to be processed without constructing a dense 3N×3N3N \times 3N transition matrix.
 
 ## Main Features
 
@@ -124,9 +124,9 @@ scasan toy \
 
 This command generates the toy-graph experiments used to illustrate the trapping-node behavior:
 
-* Figure 3(a): the AUC decreases from $1.0$ at $k=0$ to $0.5$ when $k \geq 3$;
-* Figure 3(b): the AUC remains $0.5$ for $n=1,\ldots,10$ when $k=5$;
-* Figure 11: directly applying SybilSocActNet to ScaSAN reaches an AUC of $0.5$ for sufficiently large $k$.
+* Figure 3(a): the AUC decreases from 1.01.0 at k=0k=0 to 0.50.5 when k≥3k \geq 3;
+* Figure 3(b): the AUC remains 0.50.5 for n=1,…,10n=1,\ldots,10 when k=5k=5;
+* Figure 11: directly applying SybilSocActNet to ScaSAN reaches an AUC of 0.50.5 for sufficiently large kk.
 
 Unless otherwise stated, figure numbers in this README refer to the full-version manuscript.
 
@@ -214,13 +214,13 @@ The complete experiment pipeline produces the following files:
 | ------------------------------ | -------------------------------------------------------------- |
 | `metrics.csv`                  | Experimental results in CSV format                             |
 | `metrics.json`                 | Experimental results and configuration metadata in JSON format |
-| `fig3_toy_sensitivity.pdf`     | Impact of $k$ and $n$ on the toy graph                         |
+| `fig3_toy_sensitivity.pdf`     | Impact of kk and nn on the toy graph                         |
 | `fig6_attack_strength.pdf`     | Friendship and incoming-activity attacks                       |
-| `fig7_hyperparameters.pdf`     | Impact of $\alpha$ and $\beta$                                 |
-| `fig8_runtime.pdf`             | Runtime under two values of $\beta$                            |
+| `fig7_hyperparameters.pdf`     | Impact of α\alpha and β\beta                                 |
+| `fig8_runtime.pdf`             | Runtime under two values of β\beta                            |
 | `fig11_direct_application.pdf` | SybilSocActNet directly applied to ScaSAN                      |
 | `fig12_outgoing_and_seeds.pdf` | Outgoing attacks and number of seed nodes                      |
-| `fig13_activity_weights.pdf`   | Impact of $\lambda_1$ and $\lambda_2$                          |
+| `fig13_activity_weights.pdf`   | Impact of λ1\lambda_1 and λ2\lambda_2                          |
 
 The metrics files contain AUC values, parameter values, iteration counts, graph-construction time, and trust-propagation time.
 
@@ -238,8 +238,8 @@ For each wall, posts are sorted chronologically, and consecutive posts from the 
 
 The activity blocks are processed as follows:
 
-1. The first post of an odd block increments the user's created-content aggregate $A_i$.
-2. The first post of an even block increments the user's forwarded-content aggregate $a_i$ and follows the activity in the preceding block.
+1. The first post of an odd block increments the user's created-content aggregate AiA_i.
+2. The first post of an even block increments the user's forwarded-content aggregate aia_i and follows the activity in the preceding block.
 3. The second post mentions the user associated with the preceding block.
 4. The remaining posts like preceding activities in reverse chronological order.
 
@@ -267,20 +267,20 @@ SybilScaRepAct propagates trust over the ScaSAN graph from a small set of labele
 
 For a user node, the transition distributes:
 
-* an $\alpha$ portion of its trust to honest seed users;
-* a $\beta$ portion through weighted friendship edges;
-* a $1-\alpha-\beta$ portion through activity edges.
+* an α\alpha portion of its trust to honest seed users;
+* a β\beta portion through weighted friendship edges;
+* a 1−α−β1-\alpha-\beta portion through activity edges.
 
 For a created-content activity node, the transition distributes:
 
-* an $\alpha$ portion of its trust to honest seed activities;
-* a $1-\alpha$ portion to associated users.
+* an α\alpha portion of its trust to honest seed activities;
+* a 1−α1-\alpha portion to associated users.
 
 For a forwarded-content activity node, the transition distributes:
 
-* an $\alpha$ portion of its trust to honest seed activities;
-* a $\gamma$ portion through forwarding relationships;
-* a $1-\alpha-\gamma$ portion to associated users.
+* an α\alpha portion of its trust to honest seed activities;
+* a γ\gamma portion through forwarding relationships;
+* a 1−α−γ1-\alpha-\gamma portion to associated users.
 
 The resulting user scores are normalized by weighted friendship degree. A larger normalized score indicates that the corresponding user is more likely to be honest.
 
@@ -327,11 +327,11 @@ SybilFriendship is a friendship-only baseline based on a personalized random wal
 
 It uses:
 
-* a fixed restart probability of $0.1$;
+* a fixed restart probability of 0.10.1;
 * trust propagation over friendship edges;
 * friendship-degree normalization.
 
-The restart probability remains fixed during the ScaSAN $\alpha$ and $\beta$ parameter sweeps.
+The restart probability remains fixed during the ScaSAN α\alpha and β\beta parameter sweeps.
 
 ## Default Configuration
 
@@ -345,16 +345,16 @@ The principal default parameters are:
 
 | Parameter                       | Default value |
 | ------------------------------- | ------------: |
-| $\alpha$                        |           0.1 |
-| $\beta$                         |          0.04 |
-| $\gamma$                        |         0.425 |
-| $\lambda_1$                     |             2 |
-| $\lambda_2$                     |             3 |
-| $\epsilon$                      |         0.001 |
+| α\alpha                        |           0.1 |
+| β\beta                         |          0.04 |
+| γ\gamma                        |         0.425 |
+| λ1\lambda_1                     |             2 |
+| λ2\lambda_2                     |             3 |
+| ϵ\epsilon                      |         0.001 |
 | Number of honest seeds          |            10 |
 | Number of friendship attacks    |         3,200 |
-| Incoming-activity ratio $\xi$   |       0.00002 |
-| Outgoing-activity ratio $\zeta$ |          0.27 |
+| Incoming-activity ratio ξ\xi   |       0.00002 |
+| Outgoing-activity ratio ζ\zeta |          0.27 |
 
 The number of independent experiment repetitions can also be configured in `configs/paper.yaml`. Results from each repetition are stored separately, and the generated plots report their mean values.
 
@@ -383,27 +383,6 @@ print(result.propagation_seconds)
 ```
 
 Each seed user must have at least one associated created-content or forwarded-content activity.
-
-## Tests
-
-Run the complete test suite with:
-
-```bash
-pytest
-```
-
-The tests cover:
-
-* probability-mass conservation;
-* transition-matrix validity;
-* convergence behavior;
-* tie-aware AUC computation;
-* trapping-node experiments;
-* attack injection;
-* deterministic preprocessing;
-* graph serialization and deserialization;
-* non-mutating experiment operations;
-* toy experiments corresponding to Figures 3 and 11.
 
 ## Reproducibility
 
