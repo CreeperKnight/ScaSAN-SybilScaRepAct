@@ -1,0 +1,41 @@
+random_seed: 2025
+repeats: 1
+seed_activity_count: 9
+
+defaults:
+  alpha: 0.1
+  beta: 0.04
+  gamma: 0.425
+  lambda1: 2.0
+  lambda2: 3.0
+  epsilon: 0.001
+  convergence: residual
+  max_iterations: 100000
+  seed_count: 10
+  friendship_attacks: 3200
+  xi: 0.00002
+  zeta: 0.27
+
+sybil_socactnet:
+  jump: 0.15
+  k: 0
+  activity_steps: 1
+
+sybil_friendship:
+  restart: 0.1
+
+experiments:
+  # Values explicitly shown or bounded in Figures 3, 6--8 and 11--13.
+  friendship_attack: [1600, 3200, 6400, 9600, 12800]
+  incoming_activity_attack: [0.00002, 0.00004, 0.00008, 0.00016, 0.00032, 0.00064, 0.00128]
+  alpha: [0.01, 0.05, 0.10, 0.15, 0.20]
+  beta: [0.01, 0.10, 0.20, 0.40, 0.60, 0.80]
+  runtime:
+    beta: [0.3, 0.4]
+    epsilon: [0.002, 0.001, 0.0005]
+  outgoing_activity_attack: [0.27, 0.54, 1.08, 2.16, 4.32, 8.64, 17.28]
+  seed_count: [5, 10, 15, 20]
+  lambda1: [1.0, 1.5, 2.0, 2.5]
+  lambda2: [2.5, 3.0, 3.5, 4.0]
+  toy_k: [0, 1, 2, 3, 4, 5]
+  toy_n: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
