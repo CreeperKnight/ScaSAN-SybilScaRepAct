@@ -2,7 +2,7 @@
 
 This repository is a sparse reference implementation of the experiments in
 **“Exploring Social-Activity Networks for Sybil Detection: Models and Efficient
-Algorithms.”** The supplied paper is available at
+Algorithms.”** The full version is available at
 [ScaSAN_Full_Version.pdf](ScaSAN_Full_Version.pdf).
 
 The project includes:
