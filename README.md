@@ -460,10 +460,3 @@ The citation information will be updated after publication.
 The source code is released under the MIT License. See the `LICENSE` file for details.
 
 The Facebook WOSN 2009 dataset remains subject to its original terms and is not covered by the repository's software license.
-
-## Contact
-
-For questions about the paper or source code, please contact:
-
-**Tao Tan**
-Email: `tantao2020@foxmail.com`
